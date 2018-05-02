@@ -21,4 +21,4 @@ Downloaden kannst du die ersten Build ~~hier~~.
 - [ ] Eine schöne Benutzeroberfläche
 - [ ] Englische Version
 ### Lizens
-Diese Software sowie ihr Quellcode ist unter der MIT-Lizens veröffentlicht.
+Diese Software sowie ihr Quellcode ist unter der MIT-Lizenz veröffentlicht.
