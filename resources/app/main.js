@@ -17,7 +17,7 @@ let mainWindow
 
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 800, height: 600, icon: __dirname + 'icon.png'});
+  mainWindow = new BrowserWindow({width: 800, height: 600, icon: __dirname + '/icon.png'});
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
@@ -27,7 +27,7 @@ function createWindow () {
     }));
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  //mainWindow.webContents.openDevTools();
 
   console.log('test');
   //Download version file
@@ -36,16 +36,17 @@ function createWindow () {
 
   //Set Overlay Icon
   //mainWindow.setOverlayIcon(
-    // __dirname + "icon.png",
-    // "Test?");
+  //  __dirname + "/icon.png",
+  //  "Test?");
   //Remove Title Bar
   //mainWindow.setMenu(null);
   const Menu = electron.Menu;
   const menuTemplate = [
         {
-            label: 'Zurück',
+            //label: 'Zurück',
+            label: 'Entwicklertools',
             click: () => {
-                  mainWindow.webContents.goBack();
+                  //mainWindow.webContents.goBack();
                   mainWindow.webContents.openDevTools();
                 }
               },
@@ -55,7 +56,7 @@ function createWindow () {
 
               dialog.showMessageBox({
                 title: "Über",
-                message: "TvTower-Launcher version " + app.getVersion() + " by Jonathan Frenkel \n\n Node.js version: " + process.versions.node + "\n Chromium version: " + process.versions.chrome + "\n Electron version: " + process.versions.electron,
+                message: "TvTower-Launcher version " + app.getVersion() + " by Jonathan Frenkel \n\n Node.js version: " + process.versions.node + "\n Chromium version: " + process.versions.chrome + "\n Electron version: " + process.versions.electron + "\n\nDistributed under the MIT license.\nWith this software there comes no warranty for anything.",
                 buttons: ["OK"]
               });
             }
@@ -137,7 +138,7 @@ function unpack() {
             message: "Die Versionsdatei wurde erfolgreich überschrieben und dein Spiel geupdated.",
             buttons: ["OK"]
           });
-        }        
+        }
     });
   });
 }
