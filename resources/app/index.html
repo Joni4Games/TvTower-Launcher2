@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  </head>
+  <body>
+    <div class="jumbotron text-center">
+      <h1>TvTower-Launcher</h1>
+      <p>von Jonathan Frenkel</p>
+    </div>
+    <div class="container">
+      <input type="button" id="updatebutton" value="Update" class="btn btn-success"/>
+      <input type="button" id="playbutton" value="Play" class="btn btn-success"/>
+    </div>
+    <!-- All of the Node.js APIs are available in this renderer process. -->
+
+
+    <script>
+      // You can also require other files to run in this process
+      require('./renderer.js')
+
+      var ipc = require('electron').ipcRenderer;
+
+      var updateButton = document.getElementById('updatebutton');
+      updateButton.addEventListener('click', function(){
+        ipc.once('actionReply', function(event, response){
+        processResponse(response);
+      })
+      ipc.send('updateButtonClicked', 'someData');
+      });
+
+      var playButton = document.getElementById('updatebutton');
+      playButton.addEventListener('click', function(){
+        ipc.once('actionReply', function(event, response){
+        processResponse(response);
+      })
+      ipc.send('playButtonClicked', 'someData');
+      });
+    </script>
+  </body>
+</html>
