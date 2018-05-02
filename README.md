@@ -14,5 +14,11 @@ Downloaden kannst du die ersten Build ~~hier~~.
 ### Entwickelt von
 * **Jonathan F** - *Alles* - [Joni4Games](https://github.com/Joni4Games)
 
+### Checklist
+- [x] Update-Funktion
+- [x] Spiel aus dem Launcher heraus starten
+- [x] Verträglichkeit für Windows, Linux und OSX erreichen
+- [ ] Eine schöne Benutzeroberfläche
+- [ ] Englische Version
 ### Lizens
 Diese Software sowie ihr Quellcode ist unter der MIT-Lizens veröffentlicht.
