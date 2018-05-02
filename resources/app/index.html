@@ -13,7 +13,7 @@
       <p>von Jonathan Frenkel</p>
     </div>
     <div class="container">
-      <input type="button" id="updatebutton" value="Update" class="btn btn-success"/>
+      <input type="button" id="updatebutton" value="Update/Install" class="btn btn-success"/>
       <input type="button" id="playbutton" value="Play" class="btn btn-success"/>
     </div>
     <!-- All of the Node.js APIs are available in this renderer process. -->
@@ -33,7 +33,7 @@
       ipc.send('updateButtonClicked', 'someData');
       });
 
-      var playButton = document.getElementById('updatebutton');
+      var playButton = document.getElementById('playbutton');
       playButton.addEventListener('click', function(){
         ipc.once('actionReply', function(event, response){
         processResponse(response);

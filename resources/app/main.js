@@ -11,6 +11,9 @@ const decompress = require('decompress')
 const {download} = require('electron-dl')
 const {dialog} = require('electron')
 const ipc = require('electron').ipcMain;
+const os = require('os');
+
+global.osname = os.platform();
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
@@ -53,10 +56,9 @@ function createWindow () {
               {
             label: 'Über',
             click: () => {
-
               dialog.showMessageBox({
                 title: "Über",
-                message: "TvTower-Launcher version " + app.getVersion() + " by Jonathan Frenkel \n\n Node.js version: " + process.versions.node + "\n Chromium version: " + process.versions.chrome + "\n Electron version: " + process.versions.electron + "\n\nDistributed under the MIT license.\nWith this software there comes no warranty for anything.",
+                message: "TvTower-Launcher version " + app.getVersion() + " by Jonathan Frenkel running on " + global.osname + "\n\n Node.js version: " + process.versions.node + "\n Chromium version: " + process.versions.chrome + "\n Electron version: " + process.versions.electron + "\n\nDistributed under the MIT license.\nWith this software there comes no warranty for anything.",
                 buttons: ["OK"]
               });
             }
@@ -107,6 +109,12 @@ ipc.on('updateButtonClicked', function(event, data){
           buttons: ["OK"]
         });
       } else {
+        //If clientversion < serverversion
+        dialog.showMessageBox({
+          title: "Update verfügbar!",
+          message: "Dein Spiel wird sich jetzt von Version " + global.clientversion + " auf Version " + global.serverversion + " updaten. Bitte habe gedult, der Updateprozess geschieht im Hintergrund. Du wirst benachrichtigt, sobald die erforderlichen Dateien heruntergeladen sind.",
+          buttons: ["OK"]
+        });
         update();
       }
     }); //Read Server Version File
@@ -135,7 +143,7 @@ function unpack() {
         } else {
           dialog.showMessageBox({
             title: "Alles gut!",
-            message: "Die Versionsdatei wurde erfolgreich überschrieben und dein Spiel geupdated.",
+            message: "Die Versionsdatei wurde erfolgreich überschrieben und dein Spiel geupdated. Du kannst das Spiel jetzt über den Play-Button starten.",
             buttons: ["OK"]
           });
         }
@@ -145,7 +153,31 @@ function unpack() {
 
 //PlayButtonClicked
 ipc.on('playButtonClicked', function(event, data){
-
+  var child = require('child_process').execFile;
+    //Run TVTower-Client
+    if (global.osname == 'win32') {
+    //Windows
+    child(__dirname + "\\gamefiles\\unpacked\\TVTower_Win32.exe", function(err, data) {
+    if(err){ console.error(err); return; }
+    console.log(data.toString());
+    });
+  } else if (global.osname == 'linux') {
+    child(__dirname + "\\gamefiles\\unpacked\\linux32", function(err, data) {
+    if(err){ console.error(err); return; }
+    console.log(data.toString());
+    });
+  } else if (global.osname == 'darwin') {
+    child(__dirname + "\\gamefiles\\unpacked\\TVTower.app\\Contents\\MacOS\\TVTower", function(err, data) {
+    if(err){ console.error(err); return; }
+    console.log(data.toString());
+    });
+  } else {
+    dialog.showMessageBox({
+      title: "OS not supported",
+      message: "Dein Betriebssystem " + global.osname + " wird im Moment noch nicht unterstützt. Bitte öffne ein Issue auf GitHub.",
+      buttons: ["OK"]
+    });
+  }
 });
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
