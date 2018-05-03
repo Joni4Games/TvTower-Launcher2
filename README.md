@@ -18,6 +18,7 @@ Downloaden kannst du die ersten Build [hier](https://github.com/Joni4Games/TvTow
 - [x] Update-Funktion
 - [x] Spiel aus dem Launcher heraus starten
 - [x] Verträglichkeit für Windows, Linux und OSX erreichen
+- [ ] Direktes Beziehen der Versionsnummer von GitHub (in Arbeit)
 - [ ] Download-Progressbalken
 - [ ] Eine schöne Benutzeroberfläche
 - [ ] Englische Version
