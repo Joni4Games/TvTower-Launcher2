@@ -23,5 +23,5 @@ Downloaden kannst du die ersten Build [hier](https://github.com/Joni4Games/TvTow
 - [ ] Englische Version
 - [ ] Installer für Windows, Linux und OSX
 
-### Lizens
+### Lizenz
 Diese Software sowie ihr Quellcode ist unter der MIT-Lizenz veröffentlicht.
