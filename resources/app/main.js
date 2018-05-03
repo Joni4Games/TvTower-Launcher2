@@ -34,7 +34,7 @@ function createWindow () {
 
   console.log('test');
   //Download version file
-  download(BrowserWindow.getFocusedWindow(), "https://jonigames.sytes.net/tvtower/serverversion.txt", {directory:__dirname + "/gamefiles/version", filename:"serverversion.txt"});
+  download(mainWindow, "https://jonigames.sytes.net/tvtower/serverversion.txt", {directory:__dirname + "/gamefiles/version", filename:"serverversion.txt"});
 
 
   //Set Overlay Icon
@@ -123,14 +123,14 @@ ipc.on('updateButtonClicked', function(event, data){
 
 function update() {
   //Download the new version
-  download(BrowserWindow.getFocusedWindow(), "http://tvgigant.de/downloads/TVTower.LatestRelease.zip", {directory:__dirname + "/gamefiles/download", filename:"latestrelease.zip"}).then(files => {
+  download(mainWindow, "http://tvgigant.de/downloads/TVTower.LatestRelease.zip", {directory:__dirname + "/gamefiles/download", filename:"latestrelease.zip"}).then(files => {
     unpack()
   });
 }
 
 function unpack() {
   //Decompress
-  decompress(__dirname + '/gamefiles/download/LatestRelease.zip', __dirname + '/gamefiles/unpacked').then(files => {
+  decompress(__dirname + '/gamefiles/download/latestrelease.zip', __dirname + '/gamefiles/unpacked').then(files => {
       console.log('done!');
       //Update the version file
       fs.writeFile(__dirname + "/gamefiles/version/clientversion.txt", global.serverversion, (err) => {
@@ -162,7 +162,7 @@ ipc.on('playButtonClicked', function(event, data){
     console.log(data.toString());
     });
   } else if (global.osname == 'linux') {
-    child(__dirname + "\\gamefiles\\unpacked\\linux32", function(err, data) {
+    child(__dirname + "/gamefiles/unpacked/TVTower_Linux32", function(err, data) {
     if(err){ console.error(err); return; }
     console.log(data.toString());
     });
