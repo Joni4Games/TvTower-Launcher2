@@ -21,7 +21,6 @@ Downloaden kannst du die ersten Build [hier](https://github.com/Joni4Games/TvTow
 - [ ] Download-Progressbalken
 - [ ] Eine schöne Benutzeroberfläche
 - [ ] Englische Version
-
 - [ ] Installer für Windows, Linux und OSX
 
 ### Lizens
