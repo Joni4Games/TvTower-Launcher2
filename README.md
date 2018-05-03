@@ -6,7 +6,7 @@ Dies ist die Generalüberholung meines alten TvTower-Launchers. TvTower ist ein 
 Mit diesem Launcher kannst du dein Spiel ganz einfach immer up to date halten.
 
 ### Installation
-Downloaden kannst du die ersten Build ~~hier~~.
+Downloaden kannst du die ersten Build [hier](https://github.com/Joni4Games/TvTower-Launcher2/releases/).
 
 ### Erschaffen mit
 * [Electron](https://electron.atom.io/) - Herz des ganzen Projekts
