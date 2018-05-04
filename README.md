@@ -3,7 +3,7 @@ Software launcher for the open source game TvTower
 
 ### Was ist das hier?
 Dies ist die Generalüberholung meines alten TvTower-Launchers. TvTower ist ein open-source-Fernsehmanagementspiel, welches für Windows, Linux und MacOS verfügbar ist.
-Mit diesem Launcher kannst du dein Spiel ganz einfach immer up to date halten.
+Mit diesem Launcher kannst du dein Spiel ganz einfach immer up to date halten und starten.
 
 ### Installation
 Downloaden kannst du die ersten Build [hier](https://github.com/Joni4Games/TvTower-Launcher2/releases/).
@@ -18,6 +18,10 @@ Downloaden kannst du die ersten Build [hier](https://github.com/Joni4Games/TvTow
 - [x] Update-Funktion
 - [x] Spiel aus dem Launcher heraus starten
 - [x] Verträglichkeit für Windows, Linux und OSX erreichen
+<<<<<<< HEAD
+=======
+- [ ] Direktes Beziehen der Versionsnummer von GitHub (in Arbeit)
+>>>>>>> 0489e7a857298b9a51969fa22f08b516999346f3
 - [ ] Download-Progressbalken
 - [ ] Eine schöne Benutzeroberfläche
 - [ ] Englische Version
