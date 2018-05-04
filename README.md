@@ -21,7 +21,6 @@ Downloaden kannst du die ersten Build [hier](https://github.com/Joni4Games/TvTow
 <<<<<<< HEAD
 =======
 - [ ] Direktes Beziehen der Versionsnummer von GitHub (in Arbeit)
->>>>>>> 0489e7a857298b9a51969fa22f08b516999346f3
 - [ ] Download-Progressbalken
 - [ ] Eine schöne Benutzeroberfläche
 - [ ] Englische Version
