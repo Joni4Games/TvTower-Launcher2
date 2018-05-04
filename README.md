@@ -6,7 +6,7 @@ Dies ist die Generalüberholung meines alten TvTower-Launchers. TvTower ist ein 
 Mit diesem Launcher kannst du dein Spiel ganz einfach immer up to date halten.
 
 ### Installation
-Downloaden kannst du die ersten Build ~~hier~~.
+Downloaden kannst du die ersten Build [hier](https://github.com/Joni4Games/TvTower-Launcher2/releases/).
 
 ### Erschaffen mit
 * [Electron](https://electron.atom.io/) - Herz des ganzen Projekts
@@ -18,7 +18,10 @@ Downloaden kannst du die ersten Build ~~hier~~.
 - [x] Update-Funktion
 - [x] Spiel aus dem Launcher heraus starten
 - [x] Verträglichkeit für Windows, Linux und OSX erreichen
+- [ ] Download-Progressbalken
 - [ ] Eine schöne Benutzeroberfläche
 - [ ] Englische Version
-### Lizens
+- [ ] Installer für Windows, Linux und OSX
+
+### Lizenz
 Diese Software sowie ihr Quellcode ist unter der MIT-Lizenz veröffentlicht.

@@ -13,6 +13,8 @@
   },
   "dependencies": {
     "decompress": "^4.2.0",
-    "electron-dl": "^1.11.0"
+    "electron-dl": "^1.11.0",
+    "npm": "^6.0.0",
+    "request": "^2.85.0"
   }
 }

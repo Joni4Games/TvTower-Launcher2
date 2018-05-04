@@ -12,6 +12,7 @@ const {download} = require('electron-dl')
 const {dialog} = require('electron')
 const ipc = require('electron').ipcMain;
 const os = require('os');
+const request = require('request');
 
 global.osname = os.platform();
 // Keep a global reference of the window object, if you don't, the window will
@@ -36,6 +37,25 @@ function createWindow () {
   //Download version file
   download(mainWindow, "https://jonigames.sytes.net/tvtower/serverversion.txt", {directory:__dirname + "/gamefiles/version", filename:"serverversion.txt"});
 
+
+
+  request('https://api.github.com/repos/TVTower/TVTower/releases/latest', { headers: {'User-Agent':'Super Agent/0.0.1','Content-Type':'application/x-www-form-urlencoded'}, json: true }, (err, res, body) => {
+
+    if (err) { dialog.showMessageBox({
+      title: "Fehler",
+      message: "Fehler beim Beziehen der aktuellen Version: " + err,
+      buttons: ["OK"]
+    }); }
+
+
+    //var versionnumberwithdot = versionnumberwithv.substr(2).slice(0, -1);
+    //var versionnumberwith0 = versionnumberwithdot.split('.').join("");
+    //var versionnumber = versionnumberwith0.replace(/^0+/, '');
+
+    var versionnumber = JSON.stringify(body.name).substr(2).slice(0, -1).split('.').join("").replace(/^0+/, '');
+
+
+  });
 
   //Set Overlay Icon
   //mainWindow.setOverlayIcon(
