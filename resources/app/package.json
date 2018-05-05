@@ -1,6 +1,6 @@
 {
   "name": "tvtowerlauncher",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Launcher für das OpenSource-Wirtschaftssimulationsspiel TVTower",
   "main": "main.js",
   "scripts": {

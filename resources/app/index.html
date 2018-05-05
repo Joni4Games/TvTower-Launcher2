@@ -12,19 +12,27 @@
       <h1>TvTower-Launcher</h1>
       <p>von Jonathan Frenkel</p>
     </div>
+    <centertext>
     <div class="container">
-      <input type="button" id="updatebutton" value="Update/Install" class="btn btn-success"/>
-      <input type="button" id="playbutton" value="Play" class="btn btn-success"/>
+      <input type="button" id="updatebutton" value="Updaten/Installieren" class="btn btn-success"/>
+      <input type="button" id="playbutton" value="Spielen" class="btn btn-success"/>
     </div>
+    </centertext>
+    <br>
+    <div class="container no-line-spacing">
+      <p id="downloadprint"></p>
+      <p id="publishdate"></p>
+    </div>
+
     <!-- All of the Node.js APIs are available in this renderer process. -->
 
 
     <script>
       // You can also require other files to run in this process
       require('./renderer.js')
-
       var ipc = require('electron').ipcRenderer;
 
+      //Update Button pressed
       var updateButton = document.getElementById('updatebutton');
       updateButton.addEventListener('click', function(){
         ipc.once('actionReply', function(event, response){
@@ -32,14 +40,41 @@
       })
       ipc.send('updateButtonClicked', 'someData');
       });
-
+      //Play Button pressed
       var playButton = document.getElementById('playbutton');
+
       playButton.addEventListener('click', function(){
         ipc.once('actionReply', function(event, response){
         processResponse(response);
       })
       ipc.send('playButtonClicked', 'someData');
       });
+
+      //Get download count
+      ipc.on('downloadcountnumber', function (event, downloadcount, publishdate) {
+
+        //Print download count
+        document.getElementById("downloadprint").innerHTML = downloadcount + " mal heruntergeladen";
+
+        //Print publish date
+        var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        var publishdateformatted = new Date(publishdate).toLocaleDateString('de-DE', options);
+        document.getElementById("publishdate").innerHTML = "Neuste Version vom " + publishdateformatted;
+
+        //document.getElementById("publishdate").innerHTML = publishdate;
+      });
+
     </script>
+
+    <style>
+      centertext {
+        text-align: center
+      }
+
+      .no-line-spacing {
+        line-height: 6px;
+      }
+
+    </style>
   </body>
 </html>

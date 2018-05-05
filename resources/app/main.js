@@ -33,9 +33,9 @@ function createWindow () {
   // Open the DevTools.
   //mainWindow.webContents.openDevTools();
 
-  console.log('test');
+  console.log('Anwendung gestartet.');
   //Download version file
-  download(mainWindow, "https://jonigames.sytes.net/tvtower/serverversion.txt", {directory:__dirname + "/gamefiles/version", filename:"serverversion.txt"});
+  //download(mainWindow, "https://jonigames.sytes.net/tvtower/serverversion.txt", {directory:__dirname + "/gamefiles/version", filename:"serverversion.txt"});
 
 
 
@@ -43,7 +43,7 @@ function createWindow () {
 
     if (err) { dialog.showMessageBox({
       title: "Fehler",
-      message: "Fehler beim Beziehen der aktuellen Version: " + err,
+      message: "Fehler beim Beziehen der aktuellen Version: " + err + "\nBitte eröffne ein Issue auf GitHub oder schreib mir an jonigamesstudios@gmail.com",
       buttons: ["OK"]
     }); }
 
@@ -53,8 +53,22 @@ function createWindow () {
     //var versionnumber = versionnumberwith0.replace(/^0+/, '');
 
     var versionnumber = JSON.stringify(body.name).substr(2).slice(0, -1).split('.').join("").replace(/^0+/, '');
+    //Get Download count
+    var downloadcount = JSON.stringify(body.assets[0].download_count);
+    //Get Publish Date
+    var publishdate = JSON.stringify(body.published_at).replace(/['"]+/g, '');
+    mainWindow.webContents.send('downloadcountnumber', downloadcount, publishdate);
 
 
+    //Write version to file
+    try { fs.writeFileSync(__dirname + "/gamefiles/version/serverversion.txt", versionnumber, 'utf-8'); }
+      catch(e) {
+        dialog.showMessageBox({
+          title: "Fehler",
+          message: "Fehler beim Speichern der Versionsdatei.\nBitte eröffne ein Issue auf GitHub oder schreib mir an jonigamesstudios@gmail.com\nError: " + e,
+          buttons: ["OK"]
+        });
+      }
   });
 
   //Set Overlay Icon
