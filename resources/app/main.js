@@ -188,18 +188,28 @@ function unpack() {
 //PlayButtonClicked
 ipc.on('playButtonClicked', function(event, data){
   var child = require('child_process').execFile;
+  var archvar = os.arch();
     //Run TVTower-Client
     if (global.osname == 'win32') {
-    //Windows
-    child(__dirname + "\\gamefiles\\unpacked\\TVTower_Win32.exe", function(err, data) {
-    if(err){ console.error(err); return; }
-    console.log(data.toString());
-    });
+      //Windows
+        child(__dirname + "\\gamefiles\\unpacked\\TVTower_Win32.exe", function(err, data) {
+        if(err){ console.error(err); return; }
+        console.log(data.toString());
+        });
   } else if (global.osname == 'linux') {
-    child(__dirname + "/gamefiles/unpacked/TVTower_Linux32", function(err, data) {
-    if(err){ console.error(err); return; }
-    console.log(data.toString());
-    });
+    //Linux
+      if (archvar.includes("32")) { //32-Bit Linux
+        child(__dirname + "/gamefiles/unpacked/TVTower_Linux32", function(err, data) {
+          if(err){ console.error(err); return; }
+          console.log(data.toString());
+        })
+      } else { //64-Bit Linux
+        child(__dirname + "/gamefiles/unpacked/TVTower_Linux64", function(err, data) {
+          if(err){ console.error(err); return; }
+          console.log(data.toString());
+        })
+      };
+
   } else if (global.osname == 'darwin') {
     child(__dirname + "\\gamefiles\\unpacked\\TVTower.app\\Contents\\MacOS\\TVTower", function(err, data) {
     if(err){ console.error(err); return; }
