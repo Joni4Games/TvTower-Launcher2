@@ -59,6 +59,7 @@ function createWindow () {
     console.log('Server version: ' + global.serverversion)
     //Get Download count
     var downloadcount = JSON.stringify(body.assets[0].download_count);
+    //console.log('Downloaded ' + downloadcount + " times.")
     //Get Publish Date
     var publishdate = JSON.stringify(body.published_at).replace(/['"]+/g, '');
     mainWindow.webContents.send('downloadcountnumber', downloadcount, publishdate);
