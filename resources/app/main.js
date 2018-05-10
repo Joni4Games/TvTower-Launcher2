@@ -13,6 +13,7 @@ const {dialog} = require('electron')
 const ipc = require('electron').ipcMain;
 const os = require('os');
 const request = require('request');
+const crypto = require('crypto');
 
 global.osname = os.platform();
 // Keep a global reference of the window object, if you don't, the window will
@@ -52,7 +53,10 @@ function createWindow () {
     //var versionnumberwith0 = versionnumberwithdot.split('.').join("");
     //var versionnumber = versionnumberwith0.replace(/^0+/, '');
 
-    var versionnumber = JSON.stringify(body.name).substr(2).slice(0, -1).split('.').join("").replace(/^0+/, '');
+    //var versionnumber = JSON.stringify(body.name).substr(2).slice(0, -1).split('.').join("").replace(/^0+/, '');
+    global.serverversion = crypto.createHash("md5").update(body.name).digest("hex");
+    //global.serverversion = versionnumber;
+    console.log('Server version: ' + global.serverversion)
     //Get Download count
     var downloadcount = JSON.stringify(body.assets[0].download_count);
     //Get Publish Date
@@ -61,7 +65,7 @@ function createWindow () {
 
 
     //Write version to file
-    try { fs.writeFileSync(__dirname + "/gamefiles/version/serverversion.txt", versionnumber, 'utf-8'); }
+    try { fs.writeFileSync(__dirname + "/gamefiles/version/serverversion.txt", global.serverversion, 'utf-8'); }
       catch(e) {
         dialog.showMessageBox({
           title: "Fehler",
@@ -114,12 +118,16 @@ function createWindow () {
 //UpdateButtonClicked
 ipc.on('updateButtonClicked', function(event, data){
   //Read Client version file
+  //console.log(crypto.createHash('md5').update('TestHash').digest('hex'));
   fs.readFile(__dirname + '/gamefiles/version/clientversion.txt', function (err, data) {
     if (err) {
       return console.error(err);
     } else {
       //global.clientversion = data.toString();
-      global.clientversion = parseInt(data);
+      //global.clientversion = parseInt(data);
+      //global.clientversion = crypto.createHash("md5").update(data).digest("hex");
+      global.clientversion = data;
+      console.log('Client version: ' + global.clientversion)
     }
 
 
@@ -129,11 +137,12 @@ ipc.on('updateButtonClicked', function(event, data){
         return console.error(err);
       } else {
         //global.serverversion = data.toString();
-        global.serverversion = parseInt(data);
+        //global.serverversion = parseInt(data);
+        global.serverversion = crypto.createHash("md5").update(data).digest("hex");
+        console.log('Server version: ' + global.serverversion)
       }
 
-      console.log(data.toString())
-      console.log("Asynchronous read: " + data.toString());
+
 
       //Compare versions
       if (global.serverversion == global.clientversion) {
@@ -177,7 +186,7 @@ function unpack() {
         } else {
           dialog.showMessageBox({
             title: "Alles gut!",
-            message: "Die Versionsdatei wurde erfolgreich überschrieben und dein Spiel geupdated. Du kannst das Spiel jetzt über den Play-Button starten.",
+            message: "Die Versionsdatei wurde erfolgreich mit Version " + global.serverversion + " überschrieben und dein Spiel geupdated. Du kannst das Spiel jetzt über den Play-Button starten.",
             buttons: ["OK"]
           });
         }
