@@ -2,7 +2,7 @@
 Software launcher for the open source game TvTower
 
 ### Was ist das hier?
-Dies ist die Generalüberholung meines alten TvTower-Launchers. TvTower ist ein open-source-Fernsehmanagementspiel, welches für Windows, Linux und MacOS verfügbar ist.
+Dies ist die Generalüberholung meines alten TVTower-Launchers. TvTower ist ein open-source-Fernsehmanagementspiel, welches für Windows, Linux und MacOS verfügbar ist.
 Mit diesem Launcher kannst du dein Spiel ganz einfach immer up to date halten und starten.
 
 ### Installation
