@@ -19,10 +19,10 @@ Downloaden kannst du die ersten Build [hier](https://github.com/Joni4Games/TvTow
 - [x] Spiel aus dem Launcher heraus starten
 - [x] Verträglichkeit für Windows, Linux und OSX erreichen
 - [x] TVTower-Logo im Startbildschirm
-- [x] Direktes Beziehen der Versionsnummer von GitHub (noch nicht released)
-- [ ] Kompatibilität mit Versionsnummern, welche Buchstaben beinhalten
+- [x] Direktes Beziehen der Versionsnummer von GitHub
+- [x] Kompatibilität mit Versionsnummern, welche Buchstaben beinhalten (Versionsnummern als Hash)
 - [ ] Download-Progressbalken
-- [ ] Eine schöne Benutzeroberfläche
+- [x] Eine schöne Benutzeroberfläche
 - [ ] Englische Version
 
 #### Optional
