@@ -50,7 +50,7 @@
       });
 
       //Get download count
-      ipc.on('downloadcountnumber', function (event, downloadcount, publishdate) {
+      ipc.on('downloadcountnumber', function (event, downloadcount, publishdate, publishversion) {
 
         //Print download count
         document.getElementById("downloadprint").innerHTML = downloadcount + " mal heruntergeladen";
@@ -58,7 +58,7 @@
         //Print publish date
         var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         var publishdateformatted = new Date(publishdate).toLocaleDateString('de-DE', options);
-        document.getElementById("publishdate").innerHTML = "Neuste Version vom " + publishdateformatted;
+        document.getElementById("publishdate").innerHTML = "Version " + publishversion + " vom " + publishdateformatted;
 
         //document.getElementById("publishdate").innerHTML = publishdate;
       });

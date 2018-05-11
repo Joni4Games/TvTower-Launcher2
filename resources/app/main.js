@@ -62,7 +62,8 @@ function createWindow () {
     //console.log('Downloaded ' + downloadcount + " times.")
     //Get Publish Date
     var publishdate = JSON.stringify(body.published_at).replace(/['"]+/g, '');
-    mainWindow.webContents.send('downloadcountnumber', downloadcount, publishdate);
+    var publishversion = JSON.stringify(body.name).replace(/['"]+/g, '').replace(/['v]+/g, '');
+    mainWindow.webContents.send('downloadcountnumber', downloadcount, publishdate, publishversion);
 
 
     //Write version to file
