@@ -15,7 +15,7 @@ Downloaden kannst du die ersten Build [hier](https://github.com/Joni4Games/TvTow
 * **Jonathan F** - *Alles* - [Joni4Games](https://github.com/Joni4Games)
 
 ### Screenshot
-![Screenshot](https://raw.githubusercontent.com/joni4games/tvtower-launcher2/master/screenshot.jpg)
+![Screenshot](https://i.imgur.com/tjUCTS6.png)
 
 ### Checklist
 - [x] Update-Funktion
